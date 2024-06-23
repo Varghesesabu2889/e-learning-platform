@@ -31,6 +31,9 @@ app.get('/', (req, res) => {
     res.send(`Server is working on port ${PORT}`);
 });
 
+//get all  uploads
+app.use("/uploads",express.static("uploads"))
+
 // Using routes
 app.use("/api", userRoutes);
 app.use("/api", coursesRoutes);
