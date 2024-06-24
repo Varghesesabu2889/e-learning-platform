@@ -35,7 +35,7 @@ export const register = TryCatch(async (req, res) => {
     },
     process.env.Activation_Secret,
     {
-      expiresIn: "1m",
+      expiresIn: "2m",
     }
   );
 
