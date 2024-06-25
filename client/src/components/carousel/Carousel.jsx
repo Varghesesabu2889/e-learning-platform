@@ -4,9 +4,9 @@ import {
   MDBCarousel,
   MDBCarouselItem,
 } from 'mdb-react-ui-kit';
-import Carousel1 from '../../assets/caro1.png'
-import Carousel2 from '../../assets/caro2.png'
-import Carousel3 from '../../assets/caro3.png'
+import Carousel1 from '../../assets/carousels/caro1.png'
+import Carousel2 from '../../assets/carousels/caro2.png'
+import Carousel3 from '../../assets/carousels/caro3.png'
 
 
 const Carousel = () => {

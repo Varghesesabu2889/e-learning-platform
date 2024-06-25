@@ -5,21 +5,21 @@ body{
   font-family: Arial, sans-serif;
 }
 
-.common-btn {
+.common-btn1 {
   width: 25%;
   padding: 0.75rem;
-  background-color: #007bff;
+  background-color: #09d01a;
   color: #fff;
   border: none;
   border-radius: 4px;
   cursor: pointer;
   font-size: 16px;
 }
-.common-btn:hover {
-  background-color: #0056b3;
+.common-btn1:hover {
+  background-color: #0bd008a2;
 }
 @media screen and (max-width: 576px) {
-  .common-btn {
+  .common-btn1 {
     font-size: 14px;
   }
 }
@@ -27,7 +27,7 @@ body{
 .common-btn2 {
   width: 25%;
   padding: 0.75rem;
-  background-color: #00b324;
+  background-color: #ff0000;
   color: #fff;
   border: none;
   border-radius: 4px;
@@ -35,8 +35,7 @@ body{
   font-size: 16px;
 }
 .common-btn2:hover {
-  background-color: #077916;
-
+  background-color: #7b0711;
 }
 @media screen and (max-width: 576px) {
   .common-btn2 {

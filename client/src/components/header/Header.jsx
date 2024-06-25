@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import { FaHome, FaBook, FaInfoCircle, FaUser, FaBars } from 'react-icons/fa';
 import './header.css';
-import image from '../../assets/developers.png';
+import image from '../../assets/designs/developers.png';
 
-const Header = () => {
+const Header = ({isAuth}) => {
   const [isOpen, setIsOpen] = useState(false);
 
   const toggleMenu = () => {
@@ -26,7 +26,15 @@ const Header = () => {
               <a href="/"  className='a-item'><FaHome style={{ marginRight: '5px' }} />Home</a></li>
             <li className="nav-item"><a href="/courses" className='a-item'><FaBook style={{ marginRight: '5px' }} />Courses</a></li>
             <li className="nav-item"><a href="/about" className='a-item'><FaInfoCircle style={{ marginRight: '5px' }} />About</a></li>
-            <li className="nav-item"><a href="/account" className='a-item'><FaUser style={{ marginRight: '5px' }} />Account</a></li>
+{
+  isAuth ? (
+    <li className="nav-item"><a href="/account" className='a-item'><FaUser style={{ marginRight: '5px' }} />Account</a></li>
+) : (
+  <li className="nav-item"><a href="/login" className='a-item'><FaUser style={{ marginRight: '5px' }} />Login</a></li>
+)
+}
+
+
           </ul>
         </nav>
       </div>

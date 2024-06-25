@@ -1,13 +1,13 @@
 import React from 'react'
 import './testimonials.css'
-import test1 from '../../assets/test6.png'
-import test2 from '../../assets/test1.png'
-import test3 from '../../assets/test2.png'
-import test4 from '../../assets/test3.png'
-import test5 from '../../assets/test7.png'
-import test6 from '../../assets/test4.png'
-import test7 from '../../assets/test8.png'
-import test8 from '../../assets/test5.png'
+import test1 from '../../assets/testimonials/test6.png'
+import test2 from '../../assets/testimonials/test1.png'
+import test4 from '../../assets/testimonials/test2.png'
+import test5 from '../../assets/testimonials/test7.png'
+import test6 from '../../assets/testimonials/test3.png'
+import test8 from '../../assets/testimonials/test4.png'
+import test7 from '../../assets/testimonials/test8.png'
+import test3 from '../../assets/testimonials/test5.png'
 
 const Testimonials = () => {
     const testimonialData = [

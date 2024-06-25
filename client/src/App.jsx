@@ -9,28 +9,34 @@ import Account from './pages/account/Account'
 import Register from './pages/auth/Register'
 import Login from './pages/auth/Login'
 import Verify from './pages/auth/Verify'
+import { UserData } from './context/UserContext'
+import Loading from './components/loading/Loading'
 
 const App = () => {
 
-
+  const {isAuth,user,loading} = UserData()
 
   return (
-    <div>
-      <BrowserRouter>
-      <Header/>
+    <>
+      {loading ? (
+      <Loading/>):
+      (<BrowserRouter>
+      <Header isAuth={isAuth}/>
       <Routes>
         <Route path="/" element={<Home/>}></Route>     
         <Route path="/courses" element={<Courses/>}></Route>
         <Route path="/about" element={<About/>}></Route>
-        <Route path="/account" element={<Account/>}></Route>
-        <Route path="/register" element={<Register/>}></Route>
-        <Route path="/login" element={<Login/>}></Route>
-        <Route path="/verify" element={<Verify/>}></Route>
+        <Route
+         path="/account"
+         element={isAuth?<Account user={user}/>:<Login/>} />
+        <Route path="/register" element={isAuth? <Home/> : <Register/>}/>
+        <Route path="/login" element={isAuth? <Home/>:<Login/>}/>
+        <Route path="/verify" element={isAuth?<Home/>:<Verify/>}/>
 
       </Routes>
       <Footer/>
-      </BrowserRouter>
-    </div>
+      </BrowserRouter> )}
+    </>
   )
 }
 
