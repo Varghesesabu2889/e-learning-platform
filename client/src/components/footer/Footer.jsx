@@ -64,7 +64,7 @@ const Footer = () => {
 
         <div className='text-center p-3' style={{ backgroundColor: 'rgba(0, 0, 0, 0.2)' }}>
           © {currentYear} All rights reserved by Varghese Sabu:
-          <a className='text-white' href='http://www.skillacedemy.com'>
+          <a className='text-white' href='/'>
             www.skillacedemy.com
           </a>
         </div>

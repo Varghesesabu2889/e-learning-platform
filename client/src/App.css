@@ -4,3 +4,42 @@ body{
   box-sizing: border-box;
   font-family: Arial, sans-serif;
 }
+
+.common-btn {
+  width: 25%;
+  padding: 0.75rem;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+}
+.common-btn:hover {
+  background-color: #0056b3;
+}
+@media screen and (max-width: 576px) {
+  .common-btn {
+    font-size: 14px;
+  }
+}
+
+.common-btn2 {
+  width: 25%;
+  padding: 0.75rem;
+  background-color: #00b324;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+}
+.common-btn2:hover {
+  background-color: #077916;
+
+}
+@media screen and (max-width: 576px) {
+  .common-btn2 {
+    font-size: 14px;
+  }
+}

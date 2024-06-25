@@ -9,7 +9,11 @@ import Account from './pages/account/Account'
 import Register from './pages/auth/Register'
 import Login from './pages/auth/Login'
 import Verify from './pages/auth/Verify'
+
 const App = () => {
+
+
+
   return (
     <div>
       <BrowserRouter>

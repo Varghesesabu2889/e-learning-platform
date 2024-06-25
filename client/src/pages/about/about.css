@@ -1,0 +1,52 @@
+/* about.css */
+
+.about {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 40px;
+    background-color: #f9f9f9;
+  }
+  
+  .about-content {
+    max-width: 800px;
+    background: #fff;
+    padding: 30px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+  }
+  
+  .about-content h2 {
+    font-size: 2em;
+    margin-bottom: 20px;
+    color: darkblue;
+  }
+  
+  .about-content p {
+    font-size: 1.2em;
+    line-height: 1.6;
+    color: rgb(2, 70, 70);
+    margin-bottom: 20px;
+  }
+  
+  .about-content p:last-child {
+    margin-bottom: 0;
+  }
+  
+  @media (max-width: 600px) {
+    .about-content {
+      padding: 20px;
+    }
+  
+    .about-content h2 {
+      font-size: 1.5em;
+      margin-bottom: 15px;
+    }
+    
+  
+    .about-content p {
+      font-size: 1em;
+      margin-bottom: 15px;
+    }
+  }
+  
