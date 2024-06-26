@@ -106,7 +106,8 @@ useEffect(()=>{
         btnLoading,
         loading,
         registerUser,
-        verifyOtp
+        verifyOtp,
+        fetchUser
         }}>
         {children}
         <Toaster/>
