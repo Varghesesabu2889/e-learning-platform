@@ -1,52 +1,63 @@
-/* about.css */
+/* Style for the entire page to ensure full viewport coverage */
+html, body {
+  height: 100%;
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background-color: #f9f9f9;
+}
 
+/* Style for the about section */
 .about {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 40px;
-    background-color: #f9f9f9;
-  }
-  
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  padding: 40px;
+  background-color: #f9f9f9;
+}
+
+/* Style for the content within the about section */
+.about-content {
+  max-width: 800px;
+  background: #fff;
+  padding: 30px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+}
+
+/* Style for the headings in the about content */
+.about-content h2 {
+  font-size: 2em;
+  margin-bottom: 20px;
+  color: darkblue;
+}
+
+/* Style for the paragraphs in the about content */
+.about-content p {
+  font-size: 1.2em;
+  line-height: 1.6;
+  color: rgb(2, 70, 70);
+  margin-bottom: 20px;
+}
+
+/* Remove bottom margin for the last paragraph */
+.about-content p:last-child {
+  margin-bottom: 0;
+}
+
+/* Responsive styles for smaller screens */
+@media (max-width: 600px) {
   .about-content {
-    max-width: 800px;
-    background: #fff;
-    padding: 30px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    border-radius: 8px;
-  }
-  
-  .about-content h2 {
-    font-size: 2em;
-    margin-bottom: 20px;
-    color: darkblue;
-  }
-  
-  .about-content p {
-    font-size: 1.2em;
-    line-height: 1.6;
-    color: rgb(2, 70, 70);
-    margin-bottom: 20px;
-  }
-  
-  .about-content p:last-child {
-    margin-bottom: 0;
-  }
-  
-  @media (max-width: 600px) {
-    .about-content {
       padding: 20px;
-    }
-  
-    .about-content h2 {
+  }
+
+  .about-content h2 {
       font-size: 1.5em;
       margin-bottom: 15px;
-    }
-    
-  
-    .about-content p {
+  }
+
+  .about-content p {
       font-size: 1em;
       margin-bottom: 15px;
-    }
   }
-  
+}

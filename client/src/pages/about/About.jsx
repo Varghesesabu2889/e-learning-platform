@@ -17,7 +17,7 @@ const About = () => {
         <p>
           Our approach is centered around collaboration and continuous improvement. We work closely with our students and partners to understand their unique learning needs and goals, ensuring that our courses are tailored to meet their specific requirements. By fostering a culture of innovation and excellence, we aim to make a meaningful difference in the lives of those we serve, helping them navigate the complexities of their professional journeys with confidence and ease.
         </p>
-        
+      
       </div>
     </div>
   )

@@ -2,6 +2,7 @@ import React from 'react'
 import './courses.css'
 import { CourseData } from '../../context/CourseContext'
 import CourseCards from '../../components/courseCard/CourseCards'
+import Testimonials from '../../components/testimonials/Testimonials'
 
 const Courses = () => {
   const { courses } = CourseData()
@@ -20,6 +21,7 @@ const Courses = () => {
       ) : (
         <h3>No Courses Available</h3>
       )}
+       <Testimonials/>
     </div>
   )
 }

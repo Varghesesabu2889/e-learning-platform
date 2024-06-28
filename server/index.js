@@ -13,12 +13,11 @@ export const instance = new Razaorpay({
     key_id: process.env.RAZORPAY_KEY_ID,
     key_secret: process.env.RAZORPAY_KEY_SECRET,
 })
-
 const app = express();
 
 //using middlewares
 app.use(express.json());
-app.use(cors())
+app.use(cors({origin:"*"}))
 
 const PORT = process.env.PORT || 5000;
 

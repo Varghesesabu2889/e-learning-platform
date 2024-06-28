@@ -10,7 +10,7 @@ import Loading from '../../components/loading/Loading';
 
 const CourseDescription = ({user}) => {
   const params = useParams();
-  const { fetchCourse, course,fetchCourses } = CourseData();
+  const { fetchCourse, course,fetchCourses,fetchMyCourse } = CourseData();
   const navigate = useNavigate()
 
   const [loading, setLoading] = useState(false)
@@ -21,59 +21,75 @@ const CourseDescription = ({user}) => {
     fetchCourse(params.id);
   }, [params.id, fetchCourse]);
 
-  const handleCheckout = async ()=>{
- const token = localStorage.getItem("token")
- setLoading(true)
- const {data:{order}
-} = await axios.post(`${server}/api/course/checkout/${params.id}`,{
-  headers: {
-    token,
-},
-}
-)
-const  options = {
-    "key": "rzp_test_iYYSSCCDE8nRrW", // Enter the Key ID generated from the Dashboard
-  "amount": order.id, // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
-  "currency": "INR",
-  "name": "Skill Academy", //your business name
-  "description": "Skill Academy is an online e-learning platform comprised of passionate developers, designers, and entrepreneurs dedicated to creating innovative solutions that positively impact people's lives.",
-  "image": "../../assets/designs/developers.png",
-  "order_id": order.id, //This is a sample Order ID. Pass the `id` obtained in the response of Step 1
-
-handler: async function(response){
-  const {  razorpay_order_id,
-    razorpay_payment_id,
-    razorpay_signature, } = response;
+  const handleCheckout = async () => {
+    const token = localStorage.getItem("token");
+    setLoading(true);
+    
     try {
-      const {data} = await axios.post(
-      `${server}/api/verification/:${params.id}`,{
-        razorpay_order_id,
-        razorpay_payment_id,
-        razorpay_signature,
-      },
-      {
+      const { data: { order } } = await axios.post(`${server}/api/course/checkout/${params.id}`, {}, {
         headers: {
-          token,
+          "token": token
         },
-      }
-    )
-    await fetchUser();
-    await fetchCourses();
-    toast.success(data.message);
-    setLoading(false)
-    navigate(`/payment-success/${razorpay_order_id}`)
+      });
+  
+      const options = {
+        key: "rzp_test_CcaGcNN71pfKJi", // Enter the Key ID generated from the Dashboard
+        amount: order.amount, // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
+        currency: "INR",
+        name: "Skill Academy", // your business name
+        image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRqCw2MVHdeBD7o8VKzDd8gAP21Po0SDS_yBw&s",
+        description: "Skill Academy is an online e-learning platform comprised of passionate developers, designers, and entrepreneurs dedicated to creating innovative solutions that positively impact people's lives.",
+        order_id: order.id, // Pass the `id` obtained in the response of Step 1
+        handler: async function (response) {
+          const { razorpay_order_id, razorpay_payment_id, razorpay_signature } = response;
+  
+          try {
+            const { data } = await axios.post(
+              `${server}/api/verification/${params.id}`, {
+                razorpay_order_id,
+                razorpay_payment_id,
+                razorpay_signature,
+              }, {
+                headers: {
+                  "token": token,
+                },
+              }
+            );
+  
+            await fetchUser();
+            await fetchCourses();
+            await fetchMyCourse();
+            toast.success(data.message);
+            setLoading(false);
+            navigate(`/payment-success/${razorpay_order_id}`);
+          } catch (err) {
+            toast.error(err.response.data.message);
+            setLoading(false);
+          }
+        },
+        theme: {
+          color: "#3399cc",
+        },
+      };
+  
+      const rzp1 = new window.Razorpay(options);
+      rzp1.on('payment.failed', function (response) {
+        // alert(response.error.code);
+        // alert(response.error.description);
+        // alert(response.error.source);
+        // alert(response.error.step);
+        // alert(response.error.reason);
+        // alert(response.error.metadata.order_id);
+        // alert(response.error.metadata.payment_id);
+      });
+  
+      rzp1.open();
     } catch (err) {
-      toast.error(err.response.data.message)
-      setLoading(false)
-    }},
-    theme:{
-       color: "#3399cc"
+      toast.error(err.response.data.message);
+      setLoading(false);
     }
-}
-const razorpay =  new window.Razorpay(options)
-
-razorpay.open
-}
+  };
+  
   return (
 <>
 {

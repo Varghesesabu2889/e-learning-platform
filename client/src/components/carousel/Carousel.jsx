@@ -13,7 +13,7 @@ const Carousel = () => {
   return (
     <MDBCarousel className='mt-3'>
       <MDBCarouselItem itemId={1}>
-        <img src={Carousel1} className='d-block w-100' alt='...' style={{height:"580px"}} />
+        <img src={Carousel1} className='d-block w-100' alt='...' style={{height:"680px"}} />
       </MDBCarouselItem>
       <MDBCarouselItem itemId={2}>
         <img src={Carousel2} className='d-block w-100' alt='...' style={{height:"580px"}} />

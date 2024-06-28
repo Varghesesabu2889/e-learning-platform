@@ -68,29 +68,36 @@ res.json({
 })
 })
 
-export const checkout = TryCatch(async(req,res)=>{
-    const user = await User.findById(req.user._id)
-    
-    const course = await Courses.findById(req.params.id)
+export const checkout = TryCatch(async (req, res) => {
+    try {
+        const user = await User.findById(req.user._id);
+        const course = await Courses.findById(req.params.id);
 
-if(user.subscription.includes(course._id)){
-    return res.status(400).json({
-        message:"You are already subscribed to this course",
-    })
-}
+        if (user.subscription.includes(course._id)) {
+            return res.status(400).json({
+                message: "You are already subscribed to this course",
+            });
+        }
 
-const options  = {
-    amount: Number(course.price *100),
-    currency: "INR",
-}
-const order = await instance .orders.create(options)
+        const options = {
+            amount: Number(course.price * 100),
+            currency: "INR",
+        };
 
-res.status(201).json({
-    order,
-    course,
-})
+        const order = await instance.orders.create(options);
 
-})
+        res.status(201).json({
+            order,
+            course,
+        });
+    } catch (error) {
+        res.status(500).json({
+            message: "An error occurred during checkout",
+            error: error.message,
+        });
+    }
+});
+
 
 export const paymentVerification = TryCatch(async(req,res)=>{
     const {
