@@ -35,7 +35,7 @@ toast.success("Log Out Successfully")
             <strong>Email:</strong>
             {user.email}
              </p>
-  <button className='common-btn1'>
+  <button className='common-btn1' onClick={()=>navigate(`/${user._id}/dashboard`)}>
   <MdDashboard/>
     Dashboard 
   </button>

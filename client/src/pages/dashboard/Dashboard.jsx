@@ -3,9 +3,8 @@ import './dashboard.css'
 import { CourseData } from '../../context/CourseContext'
 const Dashboard = () => {
     const {myCourse} = CourseData()
-    console.log(myCourse);
   return (
-    <div>Dashboard</div>
+    <div className='student'>Dashboard</div>
   )
 }
 

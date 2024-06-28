@@ -12,6 +12,8 @@ import Verify from './pages/auth/Verify'
 import { UserData } from './context/UserContext'
 import Loading from './components/loading/Loading'
 import CourseDescription from './pages/courseDescription/CourseDescription'
+import Paymentsuccess from './pages/paymentsuccess/Paymentsuccess'
+import Dashboard from './pages/dashboard/Dashboard'
 
 const App = () => {
 
@@ -34,6 +36,15 @@ const App = () => {
         <Route path="/login" element={isAuth? <Home/>:<Login/>}/>
         <Route path="/verify" element={isAuth?<Home/>:<Verify/>}/>
         <Route path="/course/:id" element={isAuth ? <CourseDescription user={user}/>:<Login/>}/>
+        <Route 
+        path="/payment-success/:id"
+        element={isAuth ? <Paymentsuccess  user={user}/>:<Login/>} />
+        <Route
+        path="/:id/dashboard"
+        element={isAuth ? <Dashboard user={user}/>:<Login/>} />
+        <Route 
+        path='*'
+        element={<Home/>} />
 
       </Routes>
       <Footer/>
