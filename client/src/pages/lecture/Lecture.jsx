@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import './lecture.css';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import axios from 'axios';
 import { server } from '../../main';
 import Loading from '../../components/loading/Loading';
+import toast from 'react-hot-toast';
 
 const Lecture = ({ user }) => {
   const [lectures, setLectures] = useState([]);
@@ -13,6 +14,21 @@ const Lecture = ({ user }) => {
   const [show, setShow] = useState(false);
 
   const { id } = useParams();
+  const navigate = useNavigate();
+
+  const [title, setTitle] = useState("");
+  const [description, setDescription] = useState("");
+  const [video, setVideo] = useState("");
+  const [videoPrev, setVideoPrev] = useState("");
+  const [btnLoading, setBtnLoading] = useState(false);
+
+  useEffect(() => {
+    if (user && user.role !== "admin" && !user.subscription.includes(id)) {
+      navigate('/');
+    } else {
+      fetchLectures();
+    }
+  }, [id, user, navigate]);
 
   async function fetchLectures() {
     try {
@@ -45,22 +61,63 @@ const Lecture = ({ user }) => {
     }
   }
 
-  async function deleteLecture(lectureId) {
+  async function deleteLecture(id) {
+   if(confirm("Are you sure you want to delete this lecture")){
     try {
-      await axios.delete(`${server}/api/lecture/${lectureId}`, {
+      const {data} =
+      await axios.delete(`${server}/api/lecture/${id}`, {
         headers: {
           token: localStorage.getItem("token"),
         },
       });
-      setLectures(lectures.filter(lec => lec._id !== lectureId));
+      toast.success(data.message)
+      
     } catch (err) {
-      console.log(err);
+      toast.error(err.response.data.message)
     }
+   }
   }
 
-  useEffect(() => {
-    fetchLectures();
-  }, [id]);
+  const handleChangeVideo = (e) => {
+    const file = e.target.files[0];
+    const reader = new FileReader();
+
+    reader.readAsDataURL(file);
+
+    reader.onloadend = () => {
+      setVideoPrev(reader.result);
+      setVideo(file);
+    };
+  };
+
+  const handleSubmit = async (e) => {
+    setBtnLoading(true);
+    e.preventDefault();
+    const myForm = new FormData();
+
+    myForm.append("title", title);
+    myForm.append("description", description);
+    myForm.append("file", video);
+
+    try {
+      const { data } = await axios.post(`${server}/api/course/${id}`, myForm, {
+        headers: {
+          token: localStorage.getItem("token"),
+        },
+      });
+      toast.success(data.message);
+      setBtnLoading(false);
+      setShow(false);
+      fetchLectures();
+      setTitle("")
+      setDescription("")
+      setVideo("")
+      setVideoPrev("")
+    } catch (err) {
+      toast.error(err.response.data.message);
+      setBtnLoading(false);
+    }
+  };
 
   return (
     <>
@@ -71,8 +128,8 @@ const Lecture = ({ user }) => {
               <>
                 {lecture.video ? (
                   <>
-                    <video 
-                      src={`${server}/${lecture.video}`} 
+                    <video
+                      src={`${server}/${lecture.video}`}
                       width={"100%"}
                       controls
                       controlsList='nodownload noremoteplayback'
@@ -89,38 +146,65 @@ const Lecture = ({ user }) => {
           </div>
           <div className="right">
             {user && user.role === "admin" && (
-              <button 
+              <button
                 className='common-btn11'
                 onClick={() => setShow(!show)}
               >
-                {show ?"Close":"Add Lecture +"}
+                {show ? "Close" : "Add Lecture +"}
               </button>
             )}
             {show && (
               <div className="lecture-form">
                 <h2>Add Lecture</h2>
-                <form>
+                <form onSubmit={handleSubmit}>
                   <label htmlFor="title">Title</label>
-                  <input type="text" name="title" id="title" placeholder="Enter title" required />
+                  <input
+                    type="text"
+                    name="title"
+                    id="title"
+                    value={title}
+                    onChange={e => setTitle(e.target.value)}
+                    placeholder="Enter title"
+                    required
+                  />
                   <label htmlFor="desc">Description</label>
-                  <input type="text" name="desc" id="desc" placeholder="Enter description" required />
+                  <input
+                    type="text"
+                    value={description}
+                    onChange={e => setDescription(e.target.value)}
+                    name="desc"
+                    id="desc"
+                    placeholder="Enter description"
+                    required
+                  />
                   <label htmlFor="video">Video</label>
-                  <input type="file" name="video" id="video" placeholder='Choose video' accept="video/*" required />
-                  <button type='submit' className='common-btn1'>Add</button>
+                  <input
+                    type="file"
+                    name="video"
+                    id="video"
+                    onChange={handleChangeVideo}
+                    placeholder='Choose video'
+                    accept="video/*"
+                    required
+                  />
+                  {videoPrev && <video src={videoPrev} alt="" width={300} controls></video>}
+                  <button disabled={btnLoading} type='submit' className='common-btn1'>
+                    {btnLoading ? "Please Wait..." : "Add"}
+                  </button>
                 </form>
               </div>
             )}
             {lectures && lectures.length > 0 ? lectures.map((e, i) => (
-              <div key={i}>
-                <div 
-                  onClick={() => fetchLecture(e._id)} 
+              <div key={e._id}>
+                <div
+                  onClick={() => fetchLecture(e._id)}
                   className={`lecture-number ${lecture._id === e._id && "active"}`}
                 >
                   {i + 1}. {e.title}
                 </div>
                 {user && user.role === "admin" && (
-                  <button 
-                    className="common-btn2" 
+                  <button
+                    className="common-btn2"
                     onClick={() => deleteLecture(e._id)}
                   >
                     Delete {e.title}

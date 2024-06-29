@@ -44,7 +44,12 @@ toast.success("Log Out Successfully")
   <HiOutlineLogout/>
     Logout 
   </button>
-  
+  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+
+  <button className='common-btn1' onClick={()=>navigate(`/admin/dashboard`)}>
+  <MdDashboard/>
+Admin Dashboard 
+  </button>
   
         </div>
   

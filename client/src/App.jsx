@@ -16,6 +16,7 @@ import Paymentsuccess from './pages/paymentsuccess/Paymentsuccess'
 import Dashboard from './pages/dashboard/Dashboard'
 import StudyCourse from './pages/StudyCourse/StudyCourse'
 import Lecture from './pages/lecture/Lecture'
+import AdminDashboard from './admin/dashboard/AdminDashboard'
 
 const App = () => {
 
@@ -51,6 +52,9 @@ const App = () => {
         <Route
         path="/lectures/:id"
         element={isAuth ? <Lecture user={user}/>:<Login/>} />
+        <Route 
+        path='/admin/dashboard'
+        element={isAuth ? <AdminDashboard user={user}/>:<Login/>} />
 
       </Routes>
       <Footer/>
