@@ -46,10 +46,14 @@ toast.success("Log Out Successfully")
   </button>
   &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
 
-  <button className='common-btn1' onClick={()=>navigate(`/admin/dashboard`)}>
+  {
+    user.role === "admin" && (
+      <button className='common-btn' onClick={()=>navigate(`/admin/dashboard`)}>
   <MdDashboard/>
 Admin Dashboard 
   </button>
+    )
+  }
   
         </div>
   

@@ -1,0 +1,92 @@
+.sidebar {
+  width: 250px;
+  height: 100vh;
+  background-color: darkblue;
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+}
+
+.sidebar ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.sidebar li {
+  width: 100%;
+}
+
+.sidebar li a {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  color: white;
+  padding: 15px 20px;
+  transition: background 0.3s;
+}
+
+.sidebar li a .icon {
+  margin-right: 10px;
+  font-size: 1.5em;
+}
+
+.sidebar li a:hover {
+  background-color: rgba(216, 14, 235, 0.906);
+}
+
+.sidebar li a span {
+  font-size: 1.2em;
+}
+
+/* Media Query for smaller screens */
+@media (max-width: 768px) {
+  .sidebar {
+    width: 100%;
+    height: auto;
+    position: relative;
+  }
+
+  .sidebar ul {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+  }
+
+  .sidebar li a {
+    padding: 10px 15px;
+    justify-content: center;
+  }
+
+  .sidebar li a .icon {
+    margin-right: 0;
+  }
+
+  .sidebar li a span {
+    display: none;
+  }
+}
+
+.dashboard-admin {
+  display: flex;
+}
+
+.dashboard-admin .content {
+  flex: 1;
+  padding: 20px;
+  margin-left: 250px; /* Ensures content is not hidden behind the sidebar */
+}
+
+/* Styles for the boxes in the main content */
+.main-content .box {
+  background: #f9f9f9;
+  padding: 20px;
+  margin: 10px;
+  border-radius: 10px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.main-content .box p {
+  margin: 0;
+  font-size: 1.2em;
+}
