@@ -1,8 +1,7 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import './home.css'; 
-import image from '../../assets/carousels/caro1.gif'
-import Testimonials from '../../components/testimonials/Testimonials';
+import image from '../../assets/carousels/caro2.gif'
 const Home = () => {
   const navigate = useNavigate();
 
@@ -17,7 +16,7 @@ const Home = () => {
         <button onClick={() => navigate("/courses")} className='common-btn'>Get Started</button>
       </div>
       <div className="home-image">
-        <img src={image} alt="Learning Hub" />
+        <img src={image} alt="Learning Hub"  width={"75%"} style={{marginBottom:"60px"}}/>
       </div>
     </div>
    </>

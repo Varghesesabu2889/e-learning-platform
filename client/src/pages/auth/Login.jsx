@@ -3,6 +3,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { FaEye, FaEyeSlash } from 'react-icons/fa';
 import './auth.css';
 import { UserData } from '../../context/UserContext';
+import { CourseData } from '../../context/CourseContext';
 
 const Login = () => {
   const [passwordVisible, setPasswordVisible] = useState(false);
@@ -13,13 +14,15 @@ const {btnLoading,loginUser} = UserData()
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
 
+  const { fetchMyCourse }= CourseData()
+
   const togglePasswordVisibility = () => {
     setPasswordVisible(!passwordVisible);
   };
 
 const handleSubmit =async(e)=>{
   e.preventDefault();
-  await loginUser(email,password,navigate)
+  await loginUser(email,password,navigate,fetchMyCourse)
 }
 
 

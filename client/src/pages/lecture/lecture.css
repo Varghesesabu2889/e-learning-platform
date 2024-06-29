@@ -1,0 +1,110 @@
+/* lecture.css */
+
+.lecture-page {
+    display: flex;
+    flex-direction: row;
+    padding: 20px;
+    gap: 20px;
+  }
+  
+  .left, .right {
+    flex: 1;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+  }
+  
+  .left video {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+  }
+  
+  .left h1 {
+    font-size: 24px;
+    margin-top: 10px;
+  }
+  
+  .left h3 {
+    font-size: 18px;
+    color: #555;
+    margin-top: 10px;
+  }
+  
+  .right {
+    max-width: 300px;
+  }
+  
+  .right .common-btn11, .right .common-btn2, .lecture-form .common-btn1 {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    font-size: 16px;
+    color: white;
+    background-color: #007bff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .right .common-btn2 {
+    background-color: #dc3545;
+  }
+  
+  .right .common-btn11:hover, .right .common-btn2:hover, .lecture-form .common-btn1:hover {
+    background-color: #0056b3;
+  }
+  
+  .right .common-btn2:hover {
+    background-color: #c82333;
+  }
+  
+  .lecture-number {
+    padding: 10px;
+    margin: 5px 0;
+    cursor: pointer;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    background-color: #f1f1f1;
+  }
+  
+  .lecture-number.active {
+    background-color: #007bff;
+    color: white;
+  }
+  
+  .lecture-form {
+    margin-top: 20px;
+  }
+  
+  .lecture-form h2 {
+    font-size: 20px;
+    margin-bottom: 10px;
+  }
+  
+  .lecture-form label {
+    display: block;
+    margin-top: 10px;
+    font-size: 16px;
+  }
+  
+  .lecture-form input[type="text"], .lecture-form input[type="file"] {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+  }
+  
+  @media (max-width: 768px) {
+    .lecture-page {
+      flex-direction: column;
+    }
+  
+    .right {
+      max-width: none;
+    }
+  }
+  

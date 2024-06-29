@@ -14,6 +14,8 @@ import Loading from './components/loading/Loading'
 import CourseDescription from './pages/courseDescription/CourseDescription'
 import Paymentsuccess from './pages/paymentsuccess/Paymentsuccess'
 import Dashboard from './pages/dashboard/Dashboard'
+import StudyCourse from './pages/StudyCourse/StudyCourse'
+import Lecture from './pages/lecture/Lecture'
 
 const App = () => {
 
@@ -35,16 +37,20 @@ const App = () => {
         <Route path="/register" element={isAuth? <Home/> : <Register/>}/>
         <Route path="/login" element={isAuth? <Home/>:<Login/>}/>
         <Route path="/verify" element={isAuth?<Home/>:<Verify/>}/>
-        <Route path="/course/:id" element={isAuth ? <CourseDescription user={user}/>:<Login/>}/>
+        <Route path="/course/:id" element={isAuth ?
+           <CourseDescription user={user}/>:<Login/>}/>
         <Route 
         path="/payment-success/:id"
         element={isAuth ? <Paymentsuccess  user={user}/>:<Login/>} />
         <Route
         path="/:id/dashboard"
         element={isAuth ? <Dashboard user={user}/>:<Login/>} />
-        <Route 
-        path='*'
-        element={<Home/>} />
+ <Route
+        path="/course/study/:id"
+        element={isAuth ? <StudyCourse user={user}/>:<Login/>} />
+        <Route
+        path="/lectures/:id"
+        element={isAuth ? <Lecture user={user}/>:<Login/>} />
 
       </Routes>
       <Footer/>
