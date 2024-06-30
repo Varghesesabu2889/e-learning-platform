@@ -1,0 +1,62 @@
+.users {
+    padding: 20px;
+  }
+  
+  .users h1 {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  .users table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 0 auto;
+  }
+  
+  .users th, .users td {
+    padding: 10px;
+    text-align: left;
+    border: 1px solid #ddd;
+  }
+  
+  .users th {
+    background-color: #f4f4f4;
+  }
+  
+  .users button {
+    padding: 5px 10px;
+    border: none;
+    background-color: #007bff;
+    color: white;
+    cursor: pointer;
+  }
+  
+  .users button:hover {
+    background-color: #0056b3;
+  }
+  
+  @media (max-width: 768px) {
+    .users table, .users th, .users td {
+      display: block;
+    }
+  
+    .users th, .users td {
+      text-align: right;
+      padding-left: 50%;
+      position: relative;
+    }
+  
+    .users th::before, .users td::before {
+      content: attr(data-label);
+      position: absolute;
+      left: 10px;
+      width: calc(50% - 10px);
+      text-align: left;
+      font-weight: bold;
+    }
+  
+    .users th {
+      background-color: transparent;
+    }
+  }
+  

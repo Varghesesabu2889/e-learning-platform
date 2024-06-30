@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import axios from 'axios';
 import { server } from '../../main';
 import Layout from '../utlis/Layout';
+import './admindashboard.css';
 
 const AdminDashboard = ({ user }) => {
   const navigate = useNavigate();
@@ -38,22 +39,21 @@ const AdminDashboard = ({ user }) => {
 
   return (
     <Layout>
-      <div style={{ marginLeft: "250px" }}>
-        <div className="main-content">
-          <div className="box">
-            <p>Total Courses</p>
-            <p>{stats.totalCourses}</p>
-          </div>
-          <div className="box">
-            <p>Total Lectures</p>
-            <p>{stats.totalLectures}</p>
-          </div>
-          <div className="box">
-            <p>Total Users</p>
-            <p>{stats.totalUsers}</p>
-          </div>
+      <div className="main-content">
+        <div className="box">
+          <p>Total Courses</p>
+          <p>{stats.totalCourses}</p>
+        </div>
+        <div className="box">
+          <p>Total Lectures</p>
+          <p>{stats.totalLectures}</p>
+        </div>
+        <div className="box">
+          <p>Total Users</p>
+          <p>{stats.totalUsers}</p>
         </div>
       </div>
+      <br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
     </Layout>
   );
 };

@@ -1,0 +1,51 @@
+/* AdminDashboard.css */
+.main-content {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    padding: 20px;
+    margin-left: 250px;
+  }
+  
+  .box {
+    flex: 1 1 calc(33% - 20px);
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    padding: 20px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    text-align: center;
+    transition: transform 0.3s ease;
+  }
+  
+  .box p {
+    margin: 0;
+    font-size: 1.2em;
+  }
+  
+  .box:hover {
+    transform: scale(1.05);
+  }
+  
+  /* Media Query for smaller screens */
+  @media (max-width: 768px) {
+    .main-content {
+      margin-left: 0;
+      padding: 10px;
+    }
+  
+    .box {
+      flex: 1 1 100%;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .box {
+      font-size: 1em;
+    }
+  
+    .main-content {
+      flex-direction: column;
+    }
+  }
+  

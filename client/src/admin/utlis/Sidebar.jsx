@@ -2,7 +2,7 @@ import React from 'react';
 import './common.css';
 import { Link } from 'react-router-dom';
 import { AiFillHome, AiOutlineLogout } from 'react-icons/ai';
-import { FaBook, FaUser, FaUserAlt } from 'react-icons/fa';
+import { FaBook, FaUserAlt } from 'react-icons/fa';
 
 const Sidebar = () => {
   return (
@@ -21,23 +21,23 @@ const Sidebar = () => {
             <div className="icon">
               <FaBook />
             </div>
-            <span>Courses</span> {/* Changed to Courses */}
+            <span>Courses</span>
           </Link>
         </li>
         <li>
           <Link to={'/admin/users'}>
-          <div className="icon">
-            <FaUserAlt/>
-          </div>
-          <span>Users</span>
+            <div className="icon">
+              <FaUserAlt />
+            </div>
+            <span>Users</span>
           </Link>
         </li>
         <li>
-          <Link to={'/admin/dashboard'}>
-          <div className="icon">
-            <AiOutlineLogout/>
-          </div>
-          <span>Logout</span>
+          <Link to={'/account'}>
+            <div className="icon">
+              <AiOutlineLogout />
+            </div>
+            <span>Logout</span>
           </Link>
         </li>
       </ul>

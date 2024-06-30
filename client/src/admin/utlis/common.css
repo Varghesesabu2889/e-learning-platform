@@ -1,3 +1,4 @@
+/* Sidebar Styles */
 .sidebar {
   width: 250px;
   height: 100vh;
@@ -31,7 +32,7 @@
 }
 
 .sidebar li a:hover {
-  background-color: rgba(216, 14, 235, 0.906);
+  background-color: steelblue;
 }
 
 .sidebar li a span {
@@ -66,6 +67,7 @@
   }
 }
 
+/* Layout Styles */
 .dashboard-admin {
   display: flex;
 }
@@ -76,17 +78,8 @@
   margin-left: 250px; /* Ensures content is not hidden behind the sidebar */
 }
 
-/* Styles for the boxes in the main content */
-.main-content .box {
-  background: #f9f9f9;
-  padding: 20px;
-  margin: 10px;
-  border-radius: 10px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-  text-align: center;
-}
-
-.main-content .box p {
-  margin: 0;
-  font-size: 1.2em;
+@media (max-width: 768px) {
+  .dashboard-admin .content {
+    margin-left: 0;
+  }
 }

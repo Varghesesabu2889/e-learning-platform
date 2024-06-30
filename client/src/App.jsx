@@ -17,6 +17,8 @@ import Dashboard from './pages/dashboard/Dashboard'
 import StudyCourse from './pages/StudyCourse/StudyCourse'
 import Lecture from './pages/lecture/Lecture'
 import AdminDashboard from './admin/dashboard/AdminDashboard'
+import AdminCourses from './admin/Courses/AdminCourses'
+import AdminUsers from './admin/users/AdminUsers'
 
 const App = () => {
 
@@ -55,6 +57,12 @@ const App = () => {
         <Route 
         path='/admin/dashboard'
         element={isAuth ? <AdminDashboard user={user}/>:<Login/>} />
+        <Route 
+        path='/admin/course'
+        element={isAuth ? <AdminCourses user={user}/>:<Login/>} />
+         <Route 
+        path='/admin/users'
+        element={isAuth ? <AdminUsers user={user}/>:<Login/>} />
 
       </Routes>
       <Footer/>
