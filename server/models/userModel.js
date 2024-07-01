@@ -25,6 +25,7 @@ const schema =  new mongoose.Schema({
     
 },
 ],
+resetPasswordExpire:Date,
 },{
     timestamps:true
 });

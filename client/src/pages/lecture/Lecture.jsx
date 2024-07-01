@@ -15,7 +15,6 @@ const Lecture = ({ user }) => {
 
   const { id } = useParams();
   const navigate = useNavigate();
-
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [video, setVideo] = useState("");
@@ -62,20 +61,19 @@ const Lecture = ({ user }) => {
   }
 
   async function deleteLecture(id) {
-   if(confirm("Are you sure you want to delete this lecture")){
-    try {
-      const {data} =
-      await axios.delete(`${server}/api/lecture/${id}`, {
-        headers: {
-          token: localStorage.getItem("token"),
-        },
-      });
-      toast.success(data.message)
-      
-    } catch (err) {
-      toast.error(err.response.data.message)
+    if (confirm("Are you sure you want to delete this lecture")) {
+      try {
+        const { data } = await axios.delete(`${server}/api/lecture/${id}`, {
+          headers: {
+            token: localStorage.getItem("token"),
+          },
+        });
+        toast.success(data.message);
+        fetchLectures();
+      } catch (err) {
+        toast.error(err.response.data.message);
+      }
     }
-   }
   }
 
   const handleChangeVideo = (e) => {
@@ -89,6 +87,8 @@ const Lecture = ({ user }) => {
       setVideo(file);
     };
   };
+
+
 
   const handleSubmit = async (e) => {
     setBtnLoading(true);
@@ -109,10 +109,10 @@ const Lecture = ({ user }) => {
       setBtnLoading(false);
       setShow(false);
       fetchLectures();
-      setTitle("")
-      setDescription("")
-      setVideo("")
-      setVideoPrev("")
+      setTitle("");
+      setDescription("");
+      setVideo("");
+      setVideoPrev("");
     } catch (err) {
       toast.error(err.response.data.message);
       setBtnLoading(false);

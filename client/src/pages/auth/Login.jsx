@@ -5,6 +5,7 @@ import './auth.css';
 import { UserData } from '../../context/UserContext';
 import { CourseData } from '../../context/CourseContext';
 
+
 const Login = () => {
   const [passwordVisible, setPasswordVisible] = useState(false);
 
@@ -59,6 +60,8 @@ const handleSubmit =async(e)=>{
             </button>
         </form>
         <p>Do not have an account? <Link to={"/register"}>Register</Link></p>
+        <p><Link to={"/forgot"}>Forgot Password?</Link></p>
+
       </div>
     </div>
   );

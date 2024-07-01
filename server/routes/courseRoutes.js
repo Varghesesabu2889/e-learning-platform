@@ -1,5 +1,5 @@
 import express from "express";
-import { checkout, getAllCourses, getAllLecture, getMyCourses, getSingleCourse, getSingleLecture, paymentVerification } from "../controllers/courseController.js";
+import {  checkout, getAllCourses, getAllLecture, getMyCourses, getSingleCourse, getSingleLecture, paymentVerification } from "../controllers/courseController.js";
 import { isAuth } from "../middlewares/isAuth.js";
 
 const router = express.Router()

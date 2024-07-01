@@ -2,24 +2,25 @@ import React, { useState } from 'react';
 import Timer from '../../components/Timer/Timer';
 import { UserData } from '../../context/UserContext';
 import { useNavigate } from 'react-router-dom';
+import ReCAPTCHA from "react-google-recaptcha";
 
 const Verify = () => {
 
   const {btnLoading,verifyOtp} = UserData()
   const navigate = useNavigate()
 
-  const handleResendOTP = () => {
-
-    console.log("Resending OTP...");
-
-  };
 const [otp, setOtp]= useState("")
+const [show, setShow] = useState(false)
 
 const handleSubmit = async(e)=>{
   e.preventDefault();
 await verifyOtp(Number(otp),navigate)
 
   console.log("OTP submitted", otp);
+}
+function onChange(value) {
+  console.log("Captcha value:", value);
+  setShow(true)
 }
 
 
@@ -32,12 +33,15 @@ await verifyOtp(Number(otp),navigate)
         value={otp} 
         onChange={(e)=>setOtp(e.target.value)}
         required/>
-
-        <button disabled={btnLoading}  type="submit" className="common-btn">
+<ReCAPTCHA
+    sitekey="6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI"
+    onChange={onChange}
+  />
+        {show && (<button disabled={btnLoading}  type="submit" className="common-btn">
           {btnLoading? "Please Wait":"Verify"}
-          </button>
+          </button>)}
 
-        <Timer initialSeconds={120} onResend={handleResendOTP} />
+        <Timer initialSeconds={85} />
       </form>
     </div>
   );

@@ -6,7 +6,6 @@ const Home = () => {
   const navigate = useNavigate();
 
   return (
-   <>
     <div className="home mb-5">
       <div className="home-content">
         <h1>Welcome to our learning hub!</h1>
@@ -19,7 +18,6 @@ const Home = () => {
         <img src={image} alt="Learning Hub"  width={"75%"} style={{marginBottom:"60px"}}/>
       </div>
     </div>
-   </>
   );
 };
 
